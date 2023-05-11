@@ -61,35 +61,6 @@ public class MyBinaryTreeMap<K> {
         return node.key;
     }
 
-    private Node findNode(Object target) {
-        Comparable<K> t = (Comparable<K>) target;
-        Node node = root;
-        while (node != null) {
-            if (t.compareTo(node.key) < 0) node = node.left;
-            if (t.compareTo(node.key) > 0) node = node.right;
-            if (t.compareTo(node.key) == 0) return node;
-        }
-        return null;
-    }
-
-    private Node findParent(Object target) {
-        Comparable<K> t = (Comparable<K>) target;
-        Node child = root;
-        Node parent = root;
-        while (child != null) {
-            if (t.compareTo(child.key) < 0) {
-                parent = child;
-                child = child.left;
-            }
-            if (t.compareTo(child.key) > 0) {
-                parent = child;
-                child = child.right;
-            }
-            if (t.compareTo(child.key) == 0) return parent;
-        }
-        return null;
-    }
-
     public K remove(Object key) {
         K oldKey = get(key);
         if (oldKey == null) return null;
@@ -126,6 +97,35 @@ public class MyBinaryTreeMap<K> {
         return parent;
     }
 
+    private Node findNode(Object target) {
+        Comparable<K> t = (Comparable<K>) target;
+        Node node = root;
+        while (node != null) {
+            if (t.compareTo(node.key) < 0) node = node.left;
+            if (t.compareTo(node.key) > 0) node = node.right;
+            if (t.compareTo(node.key) == 0) return node;
+        }
+        return null;
+    }
+
+    private Node findParent(Object target) {
+        Comparable<K> t = (Comparable<K>) target;
+        Node child = root;
+        Node parent = root;
+        while (child != null) {
+            if (t.compareTo(child.key) < 0) {
+                parent = child;
+                child = child.left;
+            }
+            if (t.compareTo(child.key) > 0) {
+                parent = child;
+                child = child.right;
+            }
+            if (t.compareTo(child.key) == 0) return parent;
+        }
+        return null;
+    }
+    
     private Node findSmallest(Node node) {
         if (node.left == null) return node;
         return findSmallest(node.left);
