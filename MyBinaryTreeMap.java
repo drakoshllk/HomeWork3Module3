@@ -56,9 +56,12 @@ public class MyBinaryTreeMap<K> {
     }
 
     public K get(Object key) {
-        Node node = findNode(key);
-        if (node == null) return null;
-        return node.key;
+        try {
+            Node node = findNode(key);
+            return node.key;
+        } catch (NullPointerException nullPointerException) {
+            return null;
+        }
     }
 
     public K remove(Object key) {
@@ -97,7 +100,7 @@ public class MyBinaryTreeMap<K> {
         return parent;
     }
 
-    private Node findNode(Object target) {
+    private Node findNode(Object target) throws NullPointerException {
         Comparable<K> t = (Comparable<K>) target;
         Node node = root;
         while (node != null) {
