@@ -15,7 +15,6 @@ public class Main {
         test.put(70);
         test.put(55);
         test.printTree();
-        
-
+       
     }
 }
